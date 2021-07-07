@@ -33,14 +33,10 @@
             <tab heading="About {{member.knownAs}}" id="about">
                 <h4>Description</h4>
                 <p>{{member.introduction}}</p>
-                <h4>Looking for</h4>
+                <h4 class="mt-4">Looking for</h4>
                 <p>{{member.lookingFor}}</p>
-            </tab>
-            <tab heading="Interests {{member.knownAs}}" id="about">
-                <h4>Interests</h4>
+                <h4 class="mt-4">Interests</h4>
                 <p>{{member.interests}}</p>
-                <h4>Looking for</h4>
-                <p>{{member.lookingFor}}</p>
             </tab>
             <tab heading="Photos {{member.knownAs}}" id="about">
                 <ngx-gallery [options]="galleryOptions" [images]="galleryImages"class="ngx-gallery" style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
