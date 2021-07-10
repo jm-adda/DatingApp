@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   model: any = {};
 
   constructor(
-    private accountService: AccountService,
+    public accountService: AccountService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {

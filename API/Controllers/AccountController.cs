@@ -8,6 +8,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -48,7 +49,10 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDtos>> Login(LoginDto loginDto)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.UserName.ToLower());
+            var user = await _context.Users
+                .Include(p => p.Photos)
+                .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName.ToLower());
+
             if (user == null) return Unauthorized("Invalid UserName");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
@@ -59,7 +63,8 @@ namespace API.Controllers
 
             return new UserDtos {
                 UserName = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url
             };
         }
 

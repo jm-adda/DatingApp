@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   registerMode: boolean = false;
 
-  constructor() { }
+  constructor(public accountService: AccountService,) { }
 
   ngOnInit(): void {
   }
