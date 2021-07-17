@@ -1,7 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
 
     <div class="container">
-        <a class="navbar-brand" routerLink="/" routerLinkActive="active">The Dating App</a>
+        <a class="navbar-brand" routerLink="/" routerLinkActive="active">
+          <strong>The Dating App</strong>
+        </a>
 
         <ul class="navbar-nav me-auto">
           <ng-container *ngIf="accountService.currentUser$ | async">
@@ -22,7 +24,7 @@
 
         <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
           <img class="nav-user-img" src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.userName}}">
-          <a class="dropdown-toggle text-light" dropdownToggle><strong>Welcome {{user.userName | titlecase}}</strong></a>
+          <a class="dropdown-toggle text-light" dropdownToggle><strong>Welcome {{user.knownAs | titlecase}}</strong></a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
             <a class="dropdown-item" routerLink="/member/edit" routerLinkActive="active">Edit Profile</a>
             <div class="dropdown-divider"></div>
