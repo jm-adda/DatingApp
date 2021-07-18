@@ -1,14 +1,14 @@
 <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off" *ngIf="!(accountService.currentUser$ | async)" >
     <h2 class="text-center text-primary">Sign Up</h2>
     <hr>
-
+    
     <div class="form-group">
         <label class="control-label" style="margin-right: 10px;">I am a:</label>
         <label class="radio-inline">
             <input type="radio" value="male" formControlName="gender"> Male
         </label>
         <label class="radio-inline">
-            <input type="radio" value="male" formControlName="gender" class="ml-3"> Female
+            <input type="radio" value="female" formControlName="gender" class="ml-3"> Female
         </label>
     </div>
 
