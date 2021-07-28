@@ -1,0 +1,24 @@
+<div class="row">
+    <table class="table table-hover" style="cursor: pointer;">
+        <thead class="table-active">
+            <tr>
+                <th style="width: 30%">UserName</th>
+                <th style="width: 40%; text-align: center">Active Roles</th>
+                <th style="width: 15%; text-align: center"></th>
+                <th style="width: 15%; text-align: center"></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of users" class="table-light">
+            <tr>
+                <td>{{user.userName | titlecase}}</td>
+                <td style="text-align: center;">{{user.roles}}</td>
+                <td style="text-align: center;">
+                    <button class="btn btn-primary" style="width: 100px;" (click)="openRolesModal(user)">Edit Roles</button>
+                </td>
+                <td style="text-align: center;">
+                    <button class="btn btn-danger" style="width: 100px;">Delete</button>
+                </td>
+            </tr>   
+        </tbody>
+    </table>
+</div>
