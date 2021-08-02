@@ -4,6 +4,7 @@ import { Member } from 'src/app/_models/member';
 import { Message } from 'src/app/_models/message';
 import { MembersService } from 'src/app/_services/members.service';
 import { MessageService } from 'src/app/_services/message.service';
+import { PresenceService } from 'src/app/_services/presence.service';
 
 @Component({
   selector: 'app-members-card',
@@ -16,7 +17,7 @@ export class MembersCardComponent implements OnInit {
 
   constructor(
     private memberService: MembersService,
-    private messageService: MessageService,
+    public presence: PresenceService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
