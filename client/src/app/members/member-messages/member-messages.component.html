@@ -4,7 +4,11 @@
             No messages yet... Say hi and start a conversation by using the message box below!
         </div>
 
-        <ul *ngIf="(messageService.messageThread$ | async)?.length > 0" class="chat">
+        <ul #scrollMe
+            style="overflow: scroll; height: 575px"
+            [scrollTop]="scrollMe.scrollHeight"
+            *ngIf="(messageService.messageThread$ | async)?.length > 0"
+            class="chat">
             <li *ngFor="let msg of (messageService.messageThread$ | async)">
                 <div class="card mb-2">
                     <div class="card-header bg-light">
@@ -25,6 +29,9 @@
                         </small>
                     </div>
                     <div class="card-body">
+                        <div class="header">
+                            
+                        </div>
                       <p class="card-text">{{msg.content}}</p>
                     </div>
                   </div>
