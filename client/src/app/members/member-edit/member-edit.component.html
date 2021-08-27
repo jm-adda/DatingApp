@@ -1,5 +1,5 @@
 <div class="row" *ngIf="member">
-    <div class="col-4">
+    <div class="col-4 text-center">
         <h1>{{member.knownAs}} Profile</h1>
     </div>
     <div class="col-8">
@@ -30,35 +30,51 @@
                     <p>{{member.created | date: "dd / MM / yyyy"}}</p>
                 </div>
             </div>
-            <div class="card-footer">
-                <button
-                    class="btn btn-primary btn-block"
-                    [disabled]="!editForm.dirty"
-                    form="editForm">
-                    Save Changes
-                </button>
+            <div class="card-footer text-center">
+                <div class="btn btn-group d-flex text-center">
+                    <button
+                        class="btn btn-primary"
+                        [disabled]="!editForm.dirty"
+                        form="editForm">
+                        Save Changes
+                    </button>
+                </div>
             </div>
         </div>
     </div>
+    
     <div class="col-8">
         <tabset class="member-tabset">
             <tab heading="About {{member.knownAs}}" id="about">
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
                     <h4>Description</h4>
                     <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction" rows="6"></textarea>
-                    <h4 class="mt-2">Looking for</h4>
+                    
+                    <h4 class="mt-3">Looking for</h4>
                     <textarea class="form-control" [(ngModel)]="member.lookingFor" name="lookingFor" rows="6"></textarea>
-                    <h4 class="mt-2">Interests</h4>
+                    
+                    <h4 class="mt-3">Interests</h4>
                     <textarea class="form-control" [(ngModel)]="member.interests" name="interests" rows="6"></textarea>
-                    <h4 class="mt-2">Location Details</h4>
-                    <div class="form-inline">
-                        <label for="city">City:</label>
-                        <input class="form-control mx-2" ntype="text" [(ngModel)]="member.city" name="city">
-                        <label for="country">Country:</label>
-                        <input class="form-control mx-2" ntype="text" [(ngModel)]="member.country" name="country">
+                    
+                    <h4 class="mt-3">Location Details</h4>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="city">City:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="form-control" ntype="text" [(ngModel)]="member.city" name="city">
+                        </div>
+
+                        <div class="col-auto">
+                            <label for="country">Country:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="form-control" ntype="text" [(ngModel)]="member.country" name="country">
+                        </div>
                     </div>
                 </form>
             </tab>
+
             <tab heading="Edit Photos">
                 <app-photo-editor [member]="member"></app-photo-editor>    
             </tab>
